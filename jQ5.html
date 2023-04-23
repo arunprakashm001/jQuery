@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQ5</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Validation plugin</h1>
+        <div class="col-8-md">
+            <form onsubmit="event.preventDefault()" action="#" id="faccess">
+                <div>
+                    <label for="">Name:</label>
+                    <input type="text" name="name" id="nameid" class="form-control" >
+                </div>
+                <div>
+                    <label for="">Age:</label>
+                    <input type="number" name="age" id="ageid" class="form-control">
+                </div>
+                <div>
+                    <label for="">Email:</label>
+                    <input type="email" name="email" id="emailid" class="form-control">
+                </div>
+                <div>
+                    <label for="">Adress:</label>
+                    <textarea name="address" id="addressid" cols="" rows="3" class="form-control"></textarea>
+                </div>
+                <br>
+                <!-- <input type="button" class="btn btn-success" id="btn1" value="SUBMIT"> -->
+                <button class="btn btn-success" id="btn1">SUBMIT</button>
+            </form> <br>
+        </div>
+    </div>
+
+    <script>
+
+            $(document).ready(function(){
+
+            
+            $.validator.addMethod('valname', function(value){
+                return /^[A-Za-z\.]+$/.test(value);    
+                
+            },'Alphabets only');
+
+            $.validator.addMethod('valemail', function(value){
+                return /^[a-z0-9]+@gmail+(?:\.com+)$/.test(value);
+            },'Enter a valid email like(abcd@gmail.com)');
+       
+
+                $('#faccess').validate({
+                    rules:{
+                        name : {
+                            required: true,
+                            minlength: 4,
+                            maxlength: 25,
+                            valname: true
+                            
+                            
+                        },
+                        age : {
+                            required: true,
+                            number: true,
+                            min:18,
+                            max:100
+                        },
+                        email : {
+                            required: true,
+                            minlength:14,
+                            maxlength:40,
+                            valemail: true
+                        },
+                        address : {
+                            required: true
+                        }
+
+                    },
+                    messages:{
+                        name : {
+                            required:"Name field is required",
+                            minlength: "Minimum 4 characters is required",
+                            maxlength: "Maximum 25 characters only allowed",
+                            // regex:"Alphabets only!"
+
+                        },
+                        age : {
+                            required: "Age field is required",
+                            number: "Enter numbers only",
+                            min:"Acceptable age is 18",
+                            max:"Enter a valid age(18-100 only!)"
+                            
+                        },
+                        email : {
+                            minlength:"Minimum 14 characters is required ",
+                            maxlength:"Maximum 40 characters only allowed"
+                        }
+                    },
+                    
+                });
+            
+                $("#btn1").click(function(){
+
+                    var inputs;
+                    $("#faccess").each(function(){
+                         inputs = $("input,textarea");
+                        // console.log(inputs);
+                    })
+                    // $.fn.errorValidation();
+                    $.fn.dataRead(inputs);
+                    
+                });
+
+
+                $.fn.dataRead = function(form_id){
+                    var info = {};
+                    var loop = form_id;
+                    // console.log(loop);
+                    for(var i=0; i<loop.length; i++){
+                        var getform = loop.get([i]);
+                        // console.log(getform);
+
+                        if(getform.type=="text"){
+                            var txtval = getform.value;
+                            var namecheck =  /^[A-Za-z\.]{4,25}$/;
+
+                            
+                            
+                          
+                        }
+
+                        if(getform.type=="number"){
+                            var numval = getform.value;
+                            var agecheck = /^[0-9]{1,3}$/;
+
+                            if(numval.match(agecheck)){
+                                if(numval>=18 && numval<=100){
+                                    info.age=numval;
+                                }
+                                
+                            }
+                        }
+
+                        if(getform.type=="email"){
+                            var mailval = getform.value;
+                            var mailcheck = /^[a-z0-9]+@gmail+(?:\.com+)$/;
+
+                            if(mailval.match(mailcheck)){
+                                info.email=mailval;
+                            }
+                        }
+
+                        if(getform.type=="textarea"){
+                            var addval = getform.value;
+                            if(addval.length>0){
+                                info.address=addval;
+                            }
+                           
+
+                        }
+                    }
+                    console.log(info);
+                }
+
+
+
+
+
+            });
+
+
+
+
+    </script>
+
+</body>
+</html>

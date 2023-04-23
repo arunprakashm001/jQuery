@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQ8</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+      integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+    />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-lg-8 m-auto">
+        <div class="ui-widget">
+          <label for="demo">AutoComplete:</label>
+          <input type="text" id="demo" placeholder="A-Z" />
+        </div>
+
+        <div class="ui-widget">
+          <label for="demo1">AutoComplete2:</label>
+          <input type="text" id="demo1" />
+        </div>
+
+        <form action="">
+          <div class="ui-widget">
+            <label for="">AutoComplete3</label>
+            <input type="text" id="demo2" placeholder="colour" /> <br />
+            <!-- <div id="check"></div> -->
+          </div>
+        </form>
+        <br />
+        <div>
+          date: <input type="text" id="dteselection"> 
+        </div>
+        <br />
+
+        <div>
+          Start Date: <input type="text" id="sdate">  Ending Date: <input type="text" id="edate">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme",
+        ];
+        $("#demo").autocomplete({
+          source: availableTags,
+          autofocus: true,
+        });
+      });
+
+      $(function () {
+        $("#demo1").autocomplete({
+          source: [
+            { lable: "country", value: "IND" },
+            { lable: "state", value: "TamilNadu" },
+            { lable: "street", value: "North street" },
+            { lable: "landmark", value: "Sriram building opposite" },
+          ],
+        });
+      });
+
+      $(document).ready(function () {
+        var autoarray = [
+          "red",
+          "white",
+          "green",
+          "orange",
+          "blue",
+          "yellow",
+          "pink",
+          "black",
+          "gray",
+        ];
+
+        $("#demo2").autocomplete({
+          source: autoarray,
+          select: showResult,
+          focus: showResult,
+          change: showResult,
+        });
+
+        function showResult(event, ui) {
+          $("#check").text(ui.item.label);
+        }
+
+        $("#dteselection").datepicker({
+          dateFormat: "dd-mm-yy",
+        });
+
+        $(function () {
+          $("#sdate").datepicker({
+            dateFormat: "dd-mm-yy",
+          });
+        });
+
+        $(function () {
+          $("#edate").datepicker({
+            dateFormat: "dd-mm-yy",
+          });
+        });
+
+        $("#sdate").change(function () {
+          startDate = $(this).datepicker("getDate");
+          $("#sdate").datepicker("option", "minDate", startDate);
+        });
+
+        $("#edate").change(function () {
+          endDate = $(this).datepicker("getDate");
+          $("#edate").datepicker("option", "maxDate", endDate);
+        });
+      });
+    </script>
+  </body>
+</html>

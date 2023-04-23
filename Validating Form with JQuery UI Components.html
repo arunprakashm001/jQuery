@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Plugin</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
+    <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+
+    <!-- <script src="./jQ13.js"></script>
+    <link rel="stylesheet" href="jQ13.css"> -->
+    <style>
+        #heading{
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px lightblue;
+}
+#headingdiv{
+    border: 3px solid whitesmoke;
+    border-bottom-left-radius:15px;
+    border-bottom-right-radius: 15px;
+    background-color: skyblue
+}
+body{
+    background-color: white;
+}
+.error{
+    color: red;
+}
+#pageloader{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+#pageloader img{
+  left: 50%;
+  margin-left: 37%;
+  margin-top: 10%;
+  
+}
+
+#pageloader01{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+#pageloader01 img{
+  left: 50%;
+  margin-left: 47%;
+  margin-top: -20%;
+  
+}
+
+#pageloader03{
+  background: rgba( 255, 255, 255, 0.8 );
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+#pageloader03 img{
+  left: 50%;
+  margin-left: 35%;
+  margin-top: 10%;
+  
+}
+
+/* .ui-datepicker{
+  background: greenyellow;
+} */
+
+.ui-progressbar {
+  background: gray;
+  
+}
+
+.ui-progressbar-value {
+  background: lightgreen;
+  
+}
+
+#progressbar span.caption {
+  display: block;
+  position: static;
+  text-align: center;
+}
+    </style>
+
+
+    
+</head>
+<body>
+    <div id="headingdiv">
+    <h1 id="heading">jQuery UI Plugin </h1>
+    </div>
+    <br>
+    <div  id="tabs">
+        <div class="container">
+            <ul>
+                <li class="active"><a href="#tab01" data-toggle="tab" id="demo01">ADD FORM+</a></li>
+                <li><a href="#tab02" data-toggle="tab" id="demo02">TABLE</a></li>
+              </ul>
+        </div>
+    <div class="container" id="tab02"><br>
+        <div id="pageloader03">
+            <img src="./jQuery-img/spinner.gif"  alt="processing..." />
+            
+        </div>
+        <table id="taccess" class="table table-bordered table-striped">
+            <thead>
+                <th>Employee Name</th>
+                <th>Date Of Birth</th>
+                <th>Employee Id</th>
+                <th>Employee Email</th>
+                <th>Employee Address</th>
+                <th>Mobile Number</th>
+                <th>Gender</th>
+                <th>E.Shifts</th>
+                <th>E.Skills</th>
+                <th>Actions</th>
+            </thead>
+            <tbody id="tbodyaccess">
+               
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container" id="tab01">
+        <div id="pageloader">
+            <img src="./jQuery-img/spinner.gif"  alt="processing..." />
+            
+        </div>
+        <h5>FORM COMPLETION PROGRESS BAR</h5> 
+        <div id="progressbar">  </div><br>
+                <form  id="add_faccess">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="">Employee Name:</label>
+                        <input type="text" id="adfname" class="form-control" name="name" placeholder="Enter your name">
+                        <div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Date of Birth:</label>
+                            <input type="text" name="dateofbirth" id="adfdate" class="form-control" placeholder="dd-mm-yyyy">
+                            <div id="dob01"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee ID:</label>
+                            <input type="number" id="empid" class="form-control" name="id" placeholder="Enter your ID">
+                            <div></div>  
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" id="adfemail">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Address:</label>
+                            <textarea name="address" id="adfaddress" cols="30" rows="3" class="form-control" placeholder="Enter Virudhunagar Town's name for autocomplete"></textarea>
+                            <div id="autoadd"></div>
+                            <!-- <div id="autoadd"></div> -->
+                        </div> <br>
+                        
+                        <div class="col-md-6">
+                            <label for="">Employee Mobile NO:</label>
+                            <input type="number" id="adfphone" class="form-control" name="phone" placeholder="Enter your Mobile number">
+                            <div></div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Gender:</label>
+                            <br>
+                            <input type="radio" name="gender" class="r1" value="Male" id="radio01">
+                            <label for="radio01">Male</label>
+                            <input type="radio" name="gender" class="r1" value="Female" id="radio02">
+                            <label for="radio02">Female</label>
+                            <input type="radio" name="gender" class="r1" value="Others" id="radio03">
+                            <label for="radio03">Others</label>
+                            <div></div> 
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="drop">Select your shifts:</label> <br>
+                            <select class="form-control" name="shifts" id="drop" title="click and select">
+                                <option value="">--select--</option>
+                                <option value="Firstshift" name="sft">Firstshift</option>
+                                <option value="Secondshift" name="sft">Secondshift</option>
+                                <option value="Thirdshift" name="sft">Thirdshift</option>
+                                <option value="Fourthshift"name="sft">Fourthshift</option>
+                            </select>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="col-md-12">
+                            <label for="">Select Skills:</label><br>
+                            <input type="checkbox" class="c1" name="skills" value="HTML" id="cb01">
+                            <label for="cb01">HTML</label>
+                            <input type="checkbox" class="c1" name="skills" value="JAVA" id="cb02">
+                            <label for="cb02">JAVA</label>
+                            <input type="checkbox" class="c1" name="skills" value="Phython" id="cb03">
+                            <label for="cb03">Phython</label>
+                            <input type="checkbox" class="c1" name="skills" value="Javascript" id="cb04">
+                            <label for="cb04">Javascript</label>
+                            <input type="checkbox" class="c1" name="skills" value="Php" id="cb05">
+                            <label for="cb05">Php</label>
+                            <input type="checkbox" class="c1" name="skills" value="SQL" id="cb06">
+                            <label for="cb06">SQL</label>
+                            <div></div>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary btn-block" id="adfsubmit" type="button">SUBMIT</button>
+                        </div>
+                    </div>
+
+                </form>
+    </div>
+</div>
+
+
+    <!-- ------------------------------------------Edit form ------------------------------------------------------ -->
+    <div id="pageloader01">
+        <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif"  alt="processing..." />
+     </div>
+    <div id="Editform" class="modal fade" role="dialog" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="text-center">EDIT FORM</h3>
+                </div>
+                <div class="modal-body">
+                <form  id="ed_faccess" >
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="">Employee Name:</label>
+                        <input type="text" id="edfname" class="form-control" name="name"  placeholder="Enter your name">
+                        <div></div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="">Date of Birth:</label>
+                            <input type="text" name="dateofbirth" id="edfdate" class="form-control" placeholder="dd-mm-yyyy">
+                            <div id="dob02"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="edfid">Employee ID:</label>
+                            <input type="number" id="edfid" class="form-control" name="id"  placeholder="Enter your ID" disabled title="Employee ID can't be changed.">
+                            <div></div> 
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" id="edfemail">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Address:</label>
+                            <textarea name="address" id="edfaddress" cols="30" rows="3" class="form-control"></textarea>
+                            <div id="autoed"></div>
+                        </div> <br>
+                        <div class="col-md-6">
+                            <label for="">Employee Mobile NO:</label>
+                            <input type="number" id="edfphone"  class="form-control" name="phone" placeholder="Enter your Mobile number">
+                            <div></div>
+                        </div>
+                        
+                    </div> <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Gender:</label>
+                            <br>
+                            <input type="radio" name="gender" class="r1" value="Male" id="f2r1">
+                            <label for="f2r1">Male</label>
+                            <input type="radio" name="gender" class="r1" value="Female" id="f2r2">
+                            <label for="f2r2">Female</label>
+                            <input type="radio" name="gender" class="r1" value="Others" id="f2r3">
+                            <label for="f2r3">Others</label>
+                            <div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Select your shifts:</label> <br>
+                            <select class="form-control" aria-label="Default select example" name="shifts">
+                                <option  value="">--select--</option>
+                                <option value="Firstshift" name="sft">Firstshift</option>
+                                <option value="Secondshift" name="sft">Secondshift</option>
+                                <option value="Thirdshift" name="sft">Thirdshift</option>
+                                <option value="Fourthshift" name="sft">Fourthshift</option>
+                              </select>
+                              <div></div> 
+                    </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="col-md-12">
+                            <label for="">Select Skills:</label>
+                            <input type="checkbox" class="c1" name="skills" value="HTML" id="f2c1">
+                            <label for="f2c1">HTML</label>
+                            <input type="checkbox" class="c1" name="skills" value="JAVA"  id="f2c2">
+                            <label for="f2c2">JAVA</label>
+                            <input type="checkbox" class="c1" name="skills" value="Phython"  id="f2c3">
+                            <label for="f2c3">Phython</label>
+                            <input type="checkbox" class="c1" name="skills" value="Javascript"  id="f2c4">
+                            <label for="f2c4">Javascript</label>
+                            <input type="checkbox" class="c1" name="skills" value="Php"  id="f2c5">
+                            <label for="f2c5">Php</label>
+                            <input type="checkbox" class="c1" name="skills" value="SQL"  id="f2c6">
+                            <label for="f2c6">SQL</label>
+                            <div></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success btn-block" id="edfupdate" type="button">UPDATE</button>
+                        </div>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+    
+    $(".r1, .c1").checkboxradio({});
+    
+
+    
+    $(function() {
+       
+        $("#progressbar").progressbar({
+           value:false,
+          
+        });
+        
+        $(".form-control,.r1,.c1").change(function() {
+            var pbVal = 0;
+            // progressbar.progressbar( "value", pbVal + 1 );
+            if ($("#adfname").val().length > 0) pbVal += 11;
+            if ($("#adfdate").val().length > 0) pbVal += 11;
+            if ($("#empid").val().length > 0) pbVal += 11;
+            if ($("#adfemail").val().length > 0) pbVal += 11;
+            if ($("#adfaddress").val().length > 0) pbVal += 11;
+            if ($("#adfphone").val().length > 0) pbVal += 11;
+            if ($("#drop").val().length > 0) pbVal += 11;
+            if ($("[name='gender']").is(':checked')) pbVal +=11
+            if ($("[name='skills']").is(':checked')) pbVal +=12
+            
+            
+            $( "#progressbar" ).progressbar("value", pbVal );
+            // $('#progressbar').append(pbVal+'% completed');
+        });
+    });
+
+    $( function() {
+        $("#tabs").tabs();
+        $('#drop').tooltip();
+        $('#tbodyaccess').sortable();
+        
+    });
+
+    $("#demo01").click(function(){
+        // console.log("hello");
+        $("#add_faccess").hide();
+        $("#pageloader").fadeIn();
+        $("#pageloader").fadeOut(1000);
+        $("#add_faccess").show(1000);
+
+        var validator = $("#add_faccess").validate();
+        validator.resetForm();
+
+        $("#add_faccess")[0].reset();
+
+        $(".error").removeClass("error");
+
+        validator.destroy();
+        $( "#progressbar" ).progressbar({value:false});
+       
+    });
+
+    
+    $("#demo02").click(function(){
+        // console.log("hello")
+        $("#pageloader03").fadeIn();
+        $("#pageloader03").fadeOut();
+    });
+
+    var table = $('#taccess').DataTable();
+
+    $.fn.formerrorfire=function(formid){
+
+        $.validator.addMethod('lettersonly', function(value, element){
+            return this.optional(element)||/^[A-Za-z\.]+$/.test(value);    
+        },'Alphabets only');
+    
+        $.validator.addMethod('emailval', function(value,element){
+            return this.optional(element)|| /^[a-z0-9]+@[a-z]+(?:\.[a-z]+)$/.test(value);
+        },'Enter a valid email like(abcd@gmail.com)');
+    
+        $.validator.addMethod('addval', function(value,element){
+            return this.optional(element)|| /^[a-zA-Z0-9\.\/\,]+$/.test(value);
+        },'Enter a valid address with(, / a-z A-Z 0-9 (No space!))');
+    
+        $.validator.addMethod('dateval', function(value,element){
+            return this.optional(element)||/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/.test(value);
+        },"Enter a valid Date (dd-mm-yyyy)");
+        
+    $(formid).validate({
+       
+        rules:{
+            name : {
+                required:true,
+                minlength:4,
+                maxlength:25,
+                lettersonly:true,
+                
+            },
+            phone : {
+                required:true,
+                number:true,
+                minlength:10,
+                maxlength:10
+
+            },
+            id : {
+                required:true,
+                number:true,
+                minlength:6,
+                maxlength:6
+            },
+            email : {
+                required:true,
+                minlength:14,
+                maxlength:40,
+                emailval:true
+            },
+            dateofbirth : {
+                required:true,
+                dateval:true,
+                // date: true
+
+            },
+            address : {
+                required:true,
+                addval:true
+
+            },
+            gender : {
+                required:true
+            },
+            shifts : {
+                required:true
+            },
+            skills : {
+                required:true
+            }
+        },
+        messages : {
+            name : {
+                required:"Name is required",
+                minlength:"Minimum 4 characters is required",
+                maxlength:"Maximum 25 characters only allowed"
+            },
+            age : {
+                required:"Please Enter your age",
+                number:"Enter Numbers only",
+                min:"Please Enter Acceptable age(18)",
+                max:"Enter a valid age(18-100)"
+            },
+            id : {
+                required:"Employee Id is required",
+                number:"Numbers only",
+                minlength:"Enter your correct ID with 6 numbers(e.g:221122)",
+                maxlength:"Enter a valid ID(Maximum 6 numbers only allowed)"
+            },
+            email : {
+                required:"Email field is required",
+                minlength:"Minimum 14 characters is required for valid email",
+                maxlength:"Maximum 40 characters only allowed"
+            },
+            address : {
+                required:"Address is required",
+
+            },
+            gender : {
+                required:"Please select gender"
+            },
+            shifts : {
+                required: "Please select your working shift",
+            },
+           
+        },
+        errorPlacement: function(error, element){
+            if (element.attr('type')==="radio" || element.attr('type') === 'checkbox'){
+                error.appendTo(element.closest('div'));
+            }
+            else{
+                error.appendTo(element.next('div'));
+            }
+        },
+    });
+}
+    //  $("#progressbar").progressbar({
+    //     percentCounting:true
+    //  });
+    
+        
+
+    $('#adfsubmit').click(function(){
+
+        var form01 = $("#add_faccess");
+
+        $.fn.formerrorfire(form01); 
+
+        if($('#add_faccess').valid()){
+           var checking = $.fn.dataRead(form01);
+           $.fn.arrayfun(checking);
+           $.fn.tableinsert();
+          
+
+           $.fn.myFunction=function() {
+            timeout = setTimeout($.fn.alertFunc, 1500);
+            $("#pageloader").fadeIn();
+            $("#pageloader").fadeOut(1000);
+          }
+          
+          $.fn.alertFunc=function() {
+            alert("Data's are successfully inserted on table!");
+          }
+
+          $.fn.myFunction();
+         
+           var validator = $("#add_faccess").validate();
+           validator.resetForm();
+   
+           $("#add_faccess")[0].reset();
+   
+           $(".error").removeClass("error");
+   
+           validator.destroy();
+           $( "#progressbar" ).progressbar({value:false});
+        }
+       
+    });
+
+
+    $('#edfupdate').click(function(){
+
+        var form02=$("#ed_faccess");
+
+        $.fn.formerrorfire(form02);
+
+        if($('#ed_faccess').valid()){
+            // $.fn.dataRead(form02);
+            $.fn.onUpdate();
+            alert("Data's are successfully updated on table :-) ");
+           
+        }
+
+    });
+
+    $('#Editform').on('hidden.bs.modal', function () {
+
+        var validator01 = $("#ed_faccess").validate();
+        validator01.resetForm();
+        $("#ed_faccess")[0].reset();
+
+        $(".error").removeClass("error");
+        validator01.destroy();
+
+        $("#taccess").hide();
+        $("#pageloader01").fadeIn();
+        $("#pageloader01").fadeOut();
+        $("#taccess").show(500)
+        
+    });
+   
+    
+     $.fn.dataRead = function(form_id){
+            var info = {};
+
+            var loop  = $.each($(":input",form_id),function(){});
+
+            for(var i=0; i<loop.length; i++){
+                var getform = loop.get([i]);
+
+                if(getform.type=="text"){
+                    var txtval = getform.value;
+                    var alphabets=/^[A-Za-z\.]+$/;
+
+                    if(txtval.match(alphabets)){
+                        info.name=txtval;
+                    }
+                    else{
+                        info.dateofbirth=txtval; 
+                        console.log(txtval.length)
+                    }
+                    
+                }
+
+                if(getform.type=="number"){
+                    var numval = getform.value;
+                    if(getform.id=="empid"){
+                        info.id=numval;
+                    }
+                    else{
+                        info.phone=numval;
+                    }
+                }
+
+                if(getform.type=="email"){
+                    var emailval=getform.value;
+                    info.email=emailval;
+                }
+
+                if(getform.type=="textarea"){
+                    var addressval = getform.value;
+                    info.address=addressval;
+                }
+
+                if(getform.type=="radio"){
+                    var radios = $("[type=radio]");
+                    for(let i=0; i<radios.length; i++){
+                        var radiocheck = radios.get([i]);
+                        if(radiocheck.checked){
+                            var rval=radiocheck.value;
+                            info.gender=rval;
+                        }
+                    }
+                }
+
+                if(getform.name=="shifts"){
+                    let dropdown =  $('[name="sft"]');
+                    for(let n=0; n<dropdown.length; n++){
+                        if(dropdown[n].selected){
+                            var dropval=dropdown[n].value;
+                            info.shift=dropval;
+                        }
+
+                    }
+                }
+        
+                if(getform.type=="checkbox"){
+                    var cbox = $("[type=checkbox]");
+                    var carray=[];
+                    for(let i=0; i<cbox.length; i++){
+                        var cbcheck= cbox.get([i]);
+                        if(cbcheck.checked){
+                            carray.push(cbcheck.value);
+                            info.skills=carray;
+                        }                    
+                    }
+                }
+
+            }
+
+            return info;
+        }
+
+        var arraydata=[];
+        $.fn.arrayfun = function(employee){
+            arraydata.push(employee)
+            console.log(arraydata)
+        }
+
+    
+        $.fn.tableinsert = function(){
+           
+           table.clear();
+           $("#tbodyaccess").html(" "); 
+
+           for(var i=0; i<arraydata.length; i++){
+            
+            var tabledata = "<tr><td>" + arraydata[i].name + "</td><td>" + arraydata[i].dateofbirth + "</td><td>"+arraydata[i].id+ "</td><td>"+arraydata[i].email+"</td><td>"+arraydata[i].address+"</td><td>"+arraydata[i].phone+"</td><td>"+arraydata[i].gender+"</td><td>"+arraydata[i].shift+"</td><td>"+arraydata[i].skills+"</td><td>"+"<button class='btn btn-warning' id='btn2' data-toggle='modal' data-target='#Editform' onclick='$.fn.onEdit("+arraydata[i].id+")' >EDIT</button> <button class= 'btn btn-danger' onclick='$.fn.onDelete("+ arraydata[i].id +")'>DELETE</button>" +"</td></tr>";
+            // $('#tbodyaccess').append(tabledata);
+            // $('#taccess').DataTable().row.add($(tabledata).get(0)).draw(); //This row inserting method also works 
+            table.row.add($(tabledata)).draw();
+           }
+           $("#add_faccess")[0].reset();
+    
+        }
+
+        $.fn.onEdit = function(td){
+           
+            $("#ed_faccess")[0].reset();
+
+            for(var j=0; j<arraydata.length; j++){
+                if(td==arraydata[j].id){
+                    // console.log("loopin");
+                    $("#edfname").val(arraydata[j].name);
+                    $("#edfdate").val(arraydata[j].dateofbirth);
+                   
+                    $("#edfid").val(arraydata[j].id);
+                    $("#edfage").val(arraydata[j].age);
+                    $("#edfemail").val(arraydata[j].email);
+                    $("#edfaddress").val(arraydata[j].address);
+                    $("#edfphone").val(arraydata[j].phone);
+                    
+    
+                    var radioed = arraydata[j].gender;
+                    var radios = $("[name='gender']");
+                    for(var l=0; l<radios.length; l++){
+                        var radiocheck = radios.get([l]);
+                        if(radioed==radiocheck.value){
+                            radiocheck.checked=true;
+                        } 
+                    }
+    
+                    var droped = arraydata[j].shift;
+                    var dropdownval =  $('[name="sft"]');
+                    for(var m=0; m<dropdownval.length; m++){
+                        var ddcheck = dropdownval.get([m]);
+                        if(droped==ddcheck.value){
+                            ddcheck.selected=true;
+                        }
+                    }
+    
+                    var cboxed = arraydata[j].skills;
+                    var cvalue=cboxed.toString();
+                    var cboxval = $("[name='skills']");
+                    var skillsary = cvalue.split(',');
+                    for(let n=0; n<cboxval.length; n++){
+                        var demo1 = cboxval.get([n]);
+                        for(let p=0; p<skillsary.length; p++){
+                            if(skillsary[p]==demo1.value){
+                                demo1.checked=true;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+            $("#add_faccess")[0].reset();
+        }
+
+        $.fn.onUpdate = function(){
+
+            let get1 =  $("#edfname").val();
+            let get2 =  $("#edfphone").val();
+            let get3 =  $("#edfid").val();
+            let get4 =  $("#edfemail").val();
+            let get5 =  $("#edfaddress").val();
+            let dateget = $("#edfdate").val();
+      
+            var r = $("[type=radio]")
+            for(let j=0; j<r.length; j++){
+              var rcheck = r.get([j]);
+                if(rcheck.checked){
+                   var get6 = rcheck.value;
+                }
+            }
+      
+            var dropdownval =  $('[name="sft"]');
+            for(var m=0; m<dropdownval.length; m++){
+                var ddcheck = dropdownval.get([m]);
+                if(ddcheck.selected){
+                    var get7 = ddcheck.value
+                }
+            }
+      
+            var cboxval = $("[name='skills']");
+            var skillsary = [];
+            for(let n=0; n<cboxval.length; n++){
+                var demo1 = cboxval.get([n]);
+                if(demo1.checked){
+                  skillsary.push(demo1.value);
+                  var get8 = skillsary;
+                }
+            }
+      
+            for(let i=0; i<arraydata.length; i++){
+              if(arraydata[i].id==get3){
+                  arraydata[i].name=get1;
+                  arraydata[i].phone=get2;
+                  arraydata[i].email=get4;
+                  arraydata[i].address=get5;
+                  arraydata[i].dateofbirth=dateget
+                  arraydata[i].gender=get6;
+                  arraydata[i].shift=get7;
+                  arraydata[i].skills=get8;
+                  
+                  console.log(arraydata);
+                  $.fn.tableinsert();
+              }
+            }
+
+            $("#ed_faccess")[0].reset();
+            
+          }
+
+          $.fn.onDelete = function(td){
+
+            var checkstatus =  confirm('Are you sure you want to delete this?');
+            if(checkstatus == true){
+                for(let i=0; i<arraydata.length; i++){
+                    if(td==arraydata[i].id){
+                        arraydata.splice(i,1);
+                        console.log(arraydata);
+                        
+                        $.fn.tableinsert();
+                        break;
+                    }
+                }
+                
+              
+            }
+            else{
+                return false;
+            }
+
+            
+        }
+
+        
+        var addressauto=["Alangulam","Aruppukottai","Devathanam","Thalavaipuram","Rajapalayam","Sangalingapuram","Mamsapuram","Sattur","Seithur","Sivakasi","Srivilliputhur","Sundarapandiyapuram","Thayilpatti","viswanatham","Virudhunagar","Vembakottai","Murambu","Kalavasal","Karivalam","Muhavoor"];
+
+            $("#adfaddress").autocomplete({
+                source:addressauto,
+                appendTo:$("#autoadd"),
+                minLength:2,
+                autoFocus:true,
+            });
+
+            $("#edfaddress").autocomplete({
+                source:addressauto,
+                appendTo:$("#autoed"),
+                minLength:2,
+                autoFocus:true
+            });
+
+            $(function(){
+                $('#adfdate,#edfdate').datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    changeMonth: true,
+                    changeYear: true,
+
+                    onSelect: function () {
+                        // $("#add_faccess").valid();  
+                        $('#dob01,#dob02').text(" ");
+                        $('#adfdate,#edfdate').css('color', 'black');
+                    }
+                });
+            });
+
+            // $(function(){
+            //     $('#edfdate').datepicker({
+            //         dateFormat: 'dd-mm-yy',
+            //         changeMonth: true,
+            //         changeYear: true,
+
+            //         onSelect: function () {
+            //             // $("#ed_faccess").valid();
+            //             $('#dob02').text(" ");
+            //             $('#edfdate').css('color', 'black');
+            //         }
+            //     });
+            // });
+
+           
+          
+
+
+
+
+
+
+
+});
+    </script>
+   
+
+    
+
+    
+</body>
+</html>

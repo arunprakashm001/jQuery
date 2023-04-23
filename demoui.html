@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo-ui</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> -->
+    <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
+
+    <script src="./demoui.js" ></script>
+    <link rel="stylesheet" href="./demoui.css">
+</head>
+<body>
+    <div class="container">
+    <h2>ACCORDION</h2>
+    <div id = "accordion01">
+        <h3>Tab 1</h3>
+        <div>
+           <p>
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, expedita ullam non aperiam sequi nam delectus harum totam libero? Quo pariatur soluta dignissimos minima quae. Est facilis velit neque expedita quam distinctio sed reprehenderit quasi officia alias eos reiciendis ad beatae, veniam possimus nulla cumque cupiditate minima aliquam iusto. Itaque temporibus tempora soluta quia optio reprehenderit ipsum deserunt sit hic ea consequatur repellat natus illo voluptatem, mollitia alias sunt eos perspiciatis quam voluptatibus dolorem voluptates corporis velit. Quo ea earum voluptate quis, a tempora. Iure ab nobis officia alias quos pariatur amet, necessitatibus modi debitis maiores atque a! Laborum, reiciendis.
+           </p>
+        </div>
+        <h3>Tab 2</h3>
+        <div>
+           <p>
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusantium accusamus quibusdam sit repudiandae mollitia. Ullam autem perferendis sequi cumque fugit odit debitis nobis quidem voluptate corporis pariatur, totam officiis.    
+           </p>
+        </div>
+        <h3>Tab 3</h3>
+        <div>
+           <p>
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet atque officiis, voluptas eum quod, voluptates soluta, numquam minus quo omnis quas velit laborum reiciendis adipisci! Corrupti vero, debitis quae ipsam eius nemo id impedit sit asperiores eum quaerat, cum deserunt! Optio facere error blanditiis sit quis dolorem inventore laborum, architecto ipsam totam repudiandae voluptate fuga, quos aperiam tempore quia incidunt cumque mollitia! Sint, ab error! Accusantium repellat est atque doloribus magnam aliquam, velit eveniet id quam fugit quisquam suscipit, incidunt odit soluta totam voluptates minus. Quae corporis odit suscipit ullam dolorem impedit, dolor, odio mollitia maxime pariatur iure, qui dolores! Libero laudantium eius optio porro aliquam. Reiciendis error inventore labore? Nam, reprehenderit commodi, praesentium adipisci totam unde illum magnam id omnis, non temporibus debitis aut saepe earum eligendi officiis est in animi blanditiis alias quidem! Consequatur blanditiis corrupti, ducimus illo tempora error consequuntur, mollitia quo veritatis quos quis quae magnam.
+           </p>
+        </div>
+     </div> <br>
+     <h2>PROGRESS BAR</h2>
+     <input type="number" placeholder="Enter Number 1-100" id="number">
+     <div id="progressbar"></div>
+     <button class="btn btn-success" id="btn" type="button" >SUBMIT</button>
+
+     <h2>DRAG</h2>
+     <div id="draggable" class="ui-widget-content">
+        <p>Drag me around</p>
+      </div>
+
+      <h2>RESIZABLE</h2>
+      <div id="resizable" class="ui-widget-content">
+        <h3 class="ui-widget-header">Resizable</h3>
+      </div>
+
+      <H2>SORTABLE</H2>
+      <div>
+        <ul id="sortable">
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+            <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+          </ul>
+      </div>
+
+      <h2>SLIDER</h2>
+      <div id="slider"></div>
+
+      <h2>COLOR ANIMATION</h2>
+      <div class="toggler">
+        <div id="effect" class="ui-widget-content ui-corner-all">
+          <h3 class="ui-widget-header ui-corner-all">Animate</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores qui pariatur, corrupti minus totam debitis, repellendus ipsum obcaecati fugit architecto odio. Non quos cum unde quae sequi optio veritatis modi accusantium asperiores atque rem perspiciatis, adipisci blanditiis iusto est amet minus magni dolorum. A quis itaque vitae, explicabo repudiandae sapiente.
+          </p>
+        </div>
+      </div>
+      <button id="button" class="ui-state-default ui-corner-all">Toggle Effect</button>
+
+
+
+
+    </div>
+</body>
+</html>

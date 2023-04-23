@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Val-DT Plugin</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">  
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+    
+
+    <script src="./jQ6.js"></script>
+
+    <style>
+        body{
+            background-image: url(./jQuery-img/pexels-andreea-ch-1166644sm.jpg);
+        }
+        .error{
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 class="text-success text-center" style="background-color:lightgreen; padding: 10px; border: 2px solid green">jQuery Validation & DataTable Plugin </h1>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <button class="btn btn-lg btn-info" id="btn1" data-toggle="modal" data-target="#addform">ADD FORM+</button>
+            <button type="button" class="btn btn-lg btn-warning" id="btn2" data-toggle="modal" data-target="#Editform">EDIT FORM !</button>
+        </div>
+        </div>
+        
+    </div> <br>
+
+    <div class="container">
+        <table id="taccess" class="table table-bordered table-striped">
+            <thead>
+                <th>Employee Name</th>
+                <th>Employee Age</th>
+                <th>Employee Id</th>
+                <th>Employee Email</th>
+                <th>Date Of Birth</th>
+                <th>Employee Address</th>
+                <th>Gender</th>
+                <th>E.Shifts</th>
+                <th>E.Skills</th>
+                <th>Actions</th>
+            </thead>
+            <tbody id="tbodyaccess">
+               
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+    <div id="addform" class="modal fade" role="dialog" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="text-center">ADD+ FORM</h3>
+                </div>
+                <div class="modal-body">
+                    
+                <form  id="add_faccess" onsubmit="event.preventDefault()">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="">Employee Name:</label>
+                        <input type="text" id="adfname" class="form-control" name="name" placeholder="Enter your name">
+                        <div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Age:</label>
+                            <input type="number" id="adfage" class="form-control" name="age" placeholder="Enter your age">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee ID:</label>
+                            <input type="number" id="empid" class="form-control" name="id" placeholder="Enter your ID">
+                            <div></div> 
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email" id="adfemail">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Address:</label>
+                            <textarea name="address" id="adfaddress" cols="30" rows="3" class="form-control" placeholder="Enter Virudhunagar Town's name for autocomplete"></textarea>
+                            <div id="autoadd"></div>
+                            <!-- <div id="autoadd"></div> -->
+                        </div> <br>
+                        <div class="col-md-6">
+                            <label for="">Date of Birth:</label>
+                            <input type="text" name="date" id="adfdate" class="form-control" placeholder="dd-mm-yyyy">
+                            <div></div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Gender:</label>
+                            <br>
+                            <input type="radio" name="gender" class="form-check-input" value="Male">
+                            <label for="">Male</label>
+                            <input type="radio" name="gender" class="form-check-input" value="Female">
+                            <label for="">Female</label>
+                            <input type="radio" name="gender" class="form-check-input" value="Others">
+                            <label for="">Others</label>
+                            <div></div> 
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="">Select your shifts:</label> <br>
+                            <select class="form-control" aria-label="Default select example" name="adfshifts">
+                                <option value="" selected="selected">--select--</option>
+                                <option value="Firstshift" name="addsht">Firstshift</option>
+                                <option value="Secondshift" name="addsht">Secondshift</option>
+                                <option value="Thirdshift" name="addsht">Thirdshift</option>
+                                <option value="Fourthshift"name="addsht">Fourthshift</option>
+                            </select>
+                            <div></div>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <br>
+                        <div class="col-md-12">
+                            <label for="">Select Skills:</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="HTML">
+                            <label for="">HTML</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="JAVA">
+                            <label for="">JAVA</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="Phython">
+                            <label for="">Phython</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="Javascript">
+                            <label for="">Javascript</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="Php">
+                            <label for="">Php</label>
+                            <input type="checkbox" class="form-check-input" name="adfskills" value="SQL">
+                            <label for="">SQL</label>
+                            <div></div>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary btn-block" id="adfsubmit">SUBMIT</button>
+                        </div>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ------------------------------------------Edit form ------------------------------------------------------ -->
+
+    <div id="Editform" class="modal fade" role="dialog" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="text-center">EDIT FORM</h3>
+                </div>
+                <div class="modal-body">
+                    
+                <form  id="ed_faccess" onsubmit="event.preventDefault()" >
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label for="">Employee Name:</label>
+                        <input type="text" id="edfname" name="f2name" class="form-control" placeholder="Enter your name">
+                        <div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Age:</label>
+                            <input type="number" id="edfage" name="f2age" class="form-control" placeholder="Enter your age">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee ID:</label>
+                            <input type="number" id="edfid" name="f2id" class="form-control" placeholder="Enter your ID">
+                            <div></div> 
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Employee Email:</label>
+                            <input type="email" class="form-control" name="f2email" placeholder="Enter your email" id="edfemail">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Address:</label>
+                            <textarea name="f2address" id="edfaddress" cols="30" rows="3" class="form-control"></textarea>
+                            <div id="autoed"></div>
+                        </div> <br>
+                        <div class="col-md-6">
+                            <label for="">Date of Birth:</label>
+                            <input type="text" name="f2date" id="edfdate" class="form-control" placeholder="dd-mm-yyyy">
+                            <div></div>
+                        </div>
+                    </div> <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">Employee Gender:</label>
+                            <br>
+                            <input type="radio" name="f2gender" class="form-check-input" value="Male">
+                            <label for="">Male</label>
+                            <input type="radio" name="f2gender" class="form-check-input" value="Female">
+                            <label for="">Female</label>
+                            <input type="radio" name="f2gender" class="form-check-input" value="Others">
+                            <label for="">Others</label>
+                            <div></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Select your shifts:</label> <br>
+                            <select class="form-control" aria-label="Default select example" name="f2shifts">
+                                <option  value="" selected="selected" name="edsht">--select--</option>
+                                <option value="Firstshift" name="edsht">Firstshift</option>
+                                <option value="Secondshift" name="edsht">Secondshift</option>
+                                <option value="Thirdshift" name="edsht">Thirdshift</option>
+                                <option value="Fourthshift" name="edsht">Fourthshift</option>
+                              </select>
+                              <div></div> 
+                    </div>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <div class="col-md-12">
+                            <label for="">Select Skills:</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="HTML">
+                            <label for="">HTML</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="JAVA">
+                            <label for="">JAVA</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="Phython">
+                            <label for="">Phython</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="Javascript">
+                            <label for="">Javascript</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="Php">
+                            <label for="">Php</label>
+                            <input type="checkbox" class="form-check-input" name="f2skills" value="SQL">
+                            <label for="">SQL</label>
+                            <div></div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-success btn-block" id="edfupdate">UPDATE</button>
+                        </div>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+
+    
+</body>
+</html>

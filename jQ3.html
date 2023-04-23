@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQ03</title>
+    <style>
+        body{
+            background-image: url(./jQuery-img/pexels-agung-pandit-wiguna-3401403.jpg);
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="./jQuery-CDN/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script> 
+
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-8 m-auto">
+            <h1 class="text-center text-success">STUDENT jQUERY FORM</h1>
+            <form action="">
+                <div>
+                    <label for="">Name:</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label for="">Age:</label>
+                    <input type="text" id="age" class="form-control" placeholder="Enter your age">
+                </div>
+                <div>
+                    <label for="">RollNumber:</label>
+                    <input type="text" id="rollno" class="form-control" placeholder="Enter your Rollnumber">
+                </div>
+                <div>
+                    <label for="">Email:</label>
+                    <input type="email" id="mail" class="form-control" placeholder="Enter your mail">
+                </div>
+                <div>
+                    <label for="">Address:</label>
+                    <textarea name="" id="address" cols="30" rows="3" id="address" class="form-control" placeholder="Enter your address"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">SUBJECT 01:</label>
+                        <input type="number" id="mark1" class="form-control" placeholder="Enter your mark">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">SUBJECT 02:</label>
+                        <input type="number" id="mark2" class="form-control" placeholder="Enter your mark">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="">SUBJECT 03:</label>
+                        <input type="number" id="mark3" class="form-control" placeholder="Enter your mark">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <label for="">Total:</label>
+                        <input type="number" id="tol" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Average:</label>
+                        <input type="number" id="Avg" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Grade:</label>
+                        <input type="text" id="grd" class="form-control">
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="row">
+                <button type="button" class="btn btn-primary btn-block" id="btn1">SUBMIT</button>
+            </div>
+            <br>
+            <div class="row">
+                <button type="button" class="btn btn-info btn-block" id="btn2">DIR-INSERT</button> 
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#mark3").blur(function(){
+            var sub1 = $("#mark1").val();
+            var sub2 = $("#mark2").val();
+            var sub3 = $("#mark3").val();
+            var subtol = parseInt(sub1)+parseInt(sub2)+parseInt(sub3);
+            $("#tol").val(subtol);
+            });
+
+            $("#tol").blur(function(){
+                var gettol =$("#tol").val()
+                var avg = parseInt(gettol)/3;
+                $("#Avg").val(parseInt(avg));
+            });
+
+            $("#Avg").blur(function(){
+                var getavg = $("#Avg").val()
+                if(getavg>=90 && getavg<=100){
+                    $("#grd").val("Grade-'A'");
+                }
+                else if(getavg>=80 && getavg<=89){
+                    $("#grd").val("Grade-'B'"); 
+                }
+                else if(getavg>=70 && getavg<=79){
+                    $("#grd").val("Grade-'c'");
+                }
+                else if(getavg>=50 && getavg<=69){
+                    $("#grd").val("Grade-'D'");
+                }
+                else if(getavg<50){
+                    $("#grd").val("Grade-'E'(Prepare for re-test)");
+                }
+            });
+
+            
+           
+
+            $("#btn1").click(function(){
+                let nameval = $("#name").val();
+                let ageval = $("#age").val();
+                let rollval = $("#rollno").val();
+                let mailval = $("#mail").val();
+                let addval = $("#address").val();
+                let mark1 = $("#mark1").val();
+                let mark2 = $("#mark1").val();
+                let mark3 = $("#mark1").val();
+                let tol = $("#tol").val();
+                let avg = $("#Avg").val();
+                let grd =  $("#grd").val();
+
+                if(nameval==""||ageval==""||rollval==""||mailval==""||addval=="" || mark1==""|| mark2==""|| mark3==""){
+                    alert("Please fill out All !!..")
+                }
+                else{
+                    alert("Name=>"+nameval+", Age=>"+ageval+", RollNo=>"+rollval+", Email=>"+mailval+", Address=>"+addval+", Subject 01=>"+mark1+", Subject 02=>"+mark2+", Subject 03=>"+mark3+", Total=>"+tol+", Average=>"+avg+" Grade=>"+grd)
+                }
+                
+            });
+
+            $("#btn2").click(function(){
+                $("#name").val("Kavin");
+                $("#age").val("19");
+                $("#rollno").val("STU002");
+                $("#mail").val("kavin002@gmail.com");
+                $("#address").val("12/4D Park street. Chennai");
+                $("#mark1").val("88");
+                $("#mark2").val("92");
+                $("#mark3").val("70");
+            })
+
+        });
+    </script>
+</body>
+</html>
